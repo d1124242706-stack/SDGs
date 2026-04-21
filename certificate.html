@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>學習證書 - SDGs 性別平權小達人</title>
+    <style>
+        :root {
+            --primary-color: #e91e63;
+            --gold-color: #d4af37;
+            --dark-gold: #b8860b;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #fce4ec;
+            font-family: "Microsoft JhengHei", sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* 證書主體：改用純 CSS 設計 */
+        #certificate {
+            width: 840px;
+            height: 594px; /* A4 橫式比例 */
+            background: #fff;
+            border: 15px solid var(--primary-color);
+            padding: 15px;
+            box-sizing: border-box;
+            position: relative;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        /* 外層細金線 */
+        .outer-border {
+            border: 3px solid var(--gold-color);
+            height: 100%;
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        /* 內層裝飾框 */
+        .inner-content {
+            border: 1px solid var(--gold-color);
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background: radial-gradient(circle, #ffffff 0%, #fff9fb 100%);
+        }
+
+        /* 四個角落的裝飾點綴 */
+        .inner-content::before, .inner-content::after {
+            content: "✦";
+            position: absolute;
+            color: var(--gold-color);
+            font-size: 24px;
+        }
+        .inner-content::before { top: 10px; left: 10px; }
+        .inner-content::after { top: 10px; right: 10px; }
+
+        /* 底部角落裝飾 */
+        .corner-bottom-left, .corner-bottom-right {
+            position: absolute;
+            color: var(--gold-color);
+            font-size: 24px;
+            bottom: 10px;
+        }
+        .corner-bottom-left { left: 10px; content: "✦"; }
+        .corner-bottom-right { right: 10px; content: "✦"; }
+
+        h1 {
+            font-size: 52px;
+            color: var(--primary-color);
+            margin: 10px 0;
+            letter-spacing: 8px;
+            text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
+        }
+
+        .title-sub {
+            font-size: 18px;
+            color: var(--dark-gold);
+            font-weight: bold;
+            letter-spacing: 4px;
+            margin-bottom: 5px;
+        }
+
+        .user-name-area {
+            margin: 30px 0;
+            font-size: 36px;
+        }
+
+        .user-name-display {
+            font-weight: bold;
+            color: #333;
+            border-bottom: 3px solid var(--primary-color);
+            padding: 0 20px;
+            min-width: 250px;
+            display: inline-block;
+        }
+
+        .main-text {
+            font-size: 20px;
+            line-height: 1.8;
+            color: #444;
+            max-width: 85%;
+            margin-bottom: 30px;
+        }
+
+        .seal {
+            position: absolute;
+            bottom: 50px;
+            right: 70px;
+            width: 110px;
+            height: 110px;
+            border: 4px double #f44336;
+            color: #f44336;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            border-radius: 50%;
+            transform: rotate(-15deg);
+            background: rgba(244, 67, 54, 0.05);
+            z-index: 5;
+        }
+
+        .date-text {
+            font-size: 16px;
+            color: #777;
+            margin-top: 10px;
+        }
+
+        /* 控制面板（列印時自動隱藏） */
+        .controls {
+            margin-top: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        input[type="text"] {
+            padding: 12px 20px;
+            font-size: 16px;
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            width: 180px;
+            outline: none;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            border: none;
+            transition: 0.2s;
+        }
+
+        .btn-print { background: var(--primary-color); color: white; }
+        .btn-print:hover { background: #c2185b; transform: scale(1.05); }
+        .btn-back { background: #666; color: white; text-decoration: none; }
+
+        /* 列印專用樣式 */
+        @media print {
+            body { background: white; padding: 0; }
+            .controls { display: none; }
+            #certificate { 
+                box-shadow: none; 
+                margin: 0;
+                -webkit-print-color-adjust: exact; 
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="certificate">
+        <div class="outer-border">
+            <div class="inner-content">
+                <div class="corner-bottom-left">✦</div>
+                <div class="corner-bottom-right">✦</div>
+
+                <div class="title-sub">CERTIFICATE OF HONOR</div>
+                <h1>SDGs 性別平權小達人</h1>
+                
+                <div class="user-name-area">
+                    恭喜 <span id="display-name" class="user-name-display">（請輸入姓名）</span> 同學
+                </div>
+
+                <div class="main-text">
+                    參加「SDGs 性別平權大挑戰」表現優異，<br>
+                    深刻瞭解性別平等之價值，並具備尊重多元、打破偏見之核心素養，<br>
+                    特頒此證，以資表揚。
+                </div>
+
+                <div class="date-text">
+                    頒發日期：<span id="current-date"></span>
+                </div>
+
+                <div class="seal">SDGs<br>性別平權</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <input type="text" id="input-name" placeholder="輸入姓名..." oninput="updateName()">
+        <button class="btn btn-print" onclick="window.print()">列印 / 存為 PDF</button>
+        <a href="javascript:history.back()" class="btn btn-back">回上一頁</a>
+    </div>
+
+    <script>
+        // 自動生成今日日期
+        const today = new Date();
+        const dateStr = `${today.getFullYear()} 年 ${today.getMonth() + 1} 月 ${today.getDate()} 日`;
+        document.getElementById('current-date').innerText = dateStr;
+
+        // 即時同步姓名
+        function updateName() {
+            const name = document.getElementById('input-name').value;
+            const display = document.getElementById('display-name');
+            display.innerText = name.trim() === "" ? "（請輸入姓名）" : name;
+        }
+    </script>
+
+</body>
+</html>
