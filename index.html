@@ -82,7 +82,24 @@
             visibility: hidden; /* 預設隱藏，按開始後顯示 */
         }
 
+        .header-title-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
         .title-text { color: var(--primary-color); font-weight: bold; font-size: 24px; }
+        
+        .student-info {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            background: rgba(233, 30, 99, 0.1);
+            padding: 4px 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(233, 30, 99, 0.3);
+        }
+
         .score-text { font-size: 20px; font-weight: bold; color: #333; }
 
         /* 遊戲主視圖 */
@@ -284,6 +301,8 @@
             }
             .balloon-img { width: 70px; height: 70px; }
             .balloon-tag { font-size: 14px; padding: 3px 10px; }
+            .header-title-group { gap: 8px; flex-direction: column; align-items: flex-start; }
+            .student-info { font-size: 14px; }
         }
     </style>
 </head>
@@ -305,7 +324,10 @@
     </div>
 
     <header id="game-header">
-        <div class="title-text">SDGs 性別平權</div>
+        <div class="header-title-group">
+            <div class="title-text">SDGs 性別平權</div>
+            <div class="student-info">D1124242706 張愷祐</div>
+        </div>
         <div class="score-text">答對題數：<span id="score">0</span> / 10</div>
     </header>
 
